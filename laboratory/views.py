@@ -11,16 +11,6 @@ from laboratory.models import Study, LabPage
 from laboratory.forms import ParticipantsForm
 
 
-
-def home(request):
-    #study = Study.objects.get(pk=study)        
-    #form = ParticipantsForm(request, study=study)
-    #if form.is_valid():
-    #    form.save()    
-    #studies = Study.objects.all()
-    lab_page = LabPage.objects.get(slug='home')
-    return render(request, 'laboratory/index.html', locals())
-
 def page(request, page):
 	lab_page = LabPage.objects.get(slug=page)
 	return render(request, 'laboratory/lab_page.html', locals())

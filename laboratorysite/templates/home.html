@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load laboratory %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{{STATIC_URL}}css/style.css">
+        <script type="text/javascript" src="{{STATIC_URL}}jquery.js"></script>        
+    </head>
+    <body>
+        <div class="layout">
+            <h1>Lab demo</h1>
+
+            <h2>Users</h2>
+            <p>Here are the example users -- <a href="auth/login">Login</a> / <a href="auth/logout">Logout</a> as different users to see different results.</p>
+            <p>(You are currently logged in as: {{user.username }})</p>
+            
+            <table>
+                    <tr>
+                        <th>User</th><th>&nbsp;</th><th>Password</th><th>&nbsp;</th><th>Study</th><th>&nbsp;</th><th>Group</th>
+                    </tr>
+                    <tr>
+                        <td>admin</td><td>&nbsp;</td><td>pass</td><td>&nbsp;</td><td></td><td>&nbsp;</td><td></td>
+                    </tr>
+                    <tr>
+                        <td>user1</td><td>&nbsp;</td><td>user1</td><td>&nbsp;</td><td>Study 1</td><td>&nbsp;</td><td>Group A</td>
+                    </tr>
+                    <tr>
+                        <td>user2</td><td>&nbsp;</td><td>user2</td><td>&nbsp;</td><td>Study 1</td><td>&nbsp;</td><td>Group B</td>
+                    </tr>
+            </table>
+
+            <h2>Study creation pages</h2>
+            <p>Click on a study to edit it</p>
+            
+            <ul>    
+            {% for s in studies%}
+                <li><a href="{% url 'study' s.id %}">{{ s.name }}</a></li>
+            {% endfor %}
+            </ul>
+            
+
+            <h2>Laboratory template tags</h2>
+
+            <p>Everyone in 'Study 1' should see this:</p> 
+            <div class="box">
+            {% study 'Study 1'  %}
+                <p>Hi Study 1 participant!</p>
+            {% endstudy %}
+            </div>
+
+            <p>Everyone in 'Study 1,' 'Group A' should see this:</p>
+            <div class="box">
+            {% study 'Study 1' 'Group A' %}
+                <p>Hi Group A participant!</p>
+            {% endstudy %}
+            </div>
+
+            <p>Everyone in 'Study 1,' 'Group B' should see this:</p>
+            <div class="box">
+            {% study 'Study 1' 'Gbroup B' %}
+               <p>Hi Group B participant!</p>
+            {% endstudy %}                
+            </div>
+
+            <p>Everyone NOT in 'Study 1' should see this:</p>
+            <div class="box">
+            {% study 'Study 1' 'NA' %}
+               <p>Hi person not in Study 1!</p>
+            {% endstudy %}
+            </div>
+
+            <p>This is what happens if you are logged in and the study doesn't exist:</p>
+            <div class="box">
+            {% study 'Study Foobar' %}
+               <p>There will be an error message here</p>
+            {% endstudy %}
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+

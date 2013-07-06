@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    <div class="general wrapper clearfix">
+
+        {{form.non_field_errors}}
+
+         <article class="login">
+
+            <!--<img src="{{STATIC_URL}}/img/logo-login.png" alt="DFA Logo" title="DFA Logo" />-->
+
+            <div class="container content">
+                 <h3>Member Login</h3>
+                <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                    {% csrf_token %}
+                    <div class="form-field">
+                        {{ form.username }}
+                        {{ form.username.label_tag }}
+                    </div>
+                    
+                    <div class="form-field">
+                        {{ form.password }}
+                        {{ form.password.label_tag }}
+                    </div>
+
+                    <p class="forgot"><a href="#">Forgot your username or password?</a></p>
+
+                    <input type="submit" value="login" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+            </div>
+            
+        </article>
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% load thumbnail %}
+
+{% block title %} Profile {% endblock %}
+
+{% block content %}
+
+    <div class="general wrapper clearfix">
+
+        <article class="twelvecol container profile-info">
+            <figure class="threecol first">
+                {% thumbnail user.image "274x274" crop="center" as im %}
+                  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" title="{{request.user.name}}">
+                {% empty %}
+                  <img src="{{STATIC_URL}}/img/star.jpg" alt="Name of Person" title="Name of Person" width="274 "height="274" />
+                {% endthumbnail %}
+                <div class="social">
+                    <a href="#" class="facebook"></a>
+                    <a href="#" class="twitter"></a>
+                    <a href="#" class="add-social"></a>
+                </div>
+            </figure>
+            <div class="ninecol last">
+                <h1>{{ user.name }}</h1>
+                {{form.non_field_errors}}
+                <p>
+                    {{ user.bio }}
+                </p>
+                <ul>
+                    {% if user.education %}
+                    <li>
+                        <span class="major"></span>
+                        <div>
+                            <p>{{ user.education }}</p>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% if user.website %}
+                    <li>
+                        <span class="websites"></span>
+                        <div>
+                            <p>Website: <a href="http://{{user.website}}">{{user.website}}</a></p>
+                        </div>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <span class="position"></span>
+                        <div>
+                            {% for project in user.projects.all %}
+                            Projects:<br>
+                            <p><a href="{{project.url}}">{{project.name}}</a></p>
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article><!-- Profile Header Info -->
+
+        {% if request.user == user or request.user.is_superuser %}
+        <article class="eightcol first container">
+            <div style="padding: 30px">
+                <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" style="float: right;" value="Update Profile" />
+                </form>
+                <a href="{% url 'password' %}">Change Password</a>
+            </div>
+        </article>
+        {% endif %}
+        
+    </div> <!-- FEEDBACK RUBRIC STUFFFFFF ENDS -->
+{% endblock %}

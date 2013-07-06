@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% load discourse %}
+
+{% block content %}
+
+<div class="general wrapper clearfix" id="dole">
+  
+	<hgroup class="first twelvecol">
+	  <h1>{% if lab_page %}{{ lab_page.title }}{% endif %}<span></span></h1>
+	</hgroup>
+	
+	<article class="first twelvecol container">
+		<div class="content">
+			{% if lab_page %}
+				{% document lab_page %}			
+			{% endif %}			
+		</div>
+	</article>
+	
+</div>
+	
+{% endblock %}

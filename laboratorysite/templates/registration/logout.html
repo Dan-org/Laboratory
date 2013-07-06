@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %} Logout {% endblock %}
+
+{% block content %}
+    <div class="general wrapper clearfix">
+        <hgroup class="first twelvecol">
+          <h1>Logout</h1>
+        </hgroup>
+
+        <article class="first eightcol container">
+            <div class="content">
+                <p>You have been logged out.</p>
+
+                <a href="{% url 'django.contrib.auth.views.login' %}">Login again.</a>
+            </div>
+        </article>
+    </div>
+{% endblock %}

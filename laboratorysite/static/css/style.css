@@ -1,0 +1,55 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #444;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, ul, ol, blockquote { margin: 16px 0px 0px; }
+
+.layout {
+    width: 800px;
+    margin: 0px auto;
+}
+
+.content-editing {
+    outline: 1px dotted #ddd;
+}
+
+.content-body {
+}
+
+table {
+font-family: AvenirLT-Medium;
+font-size: 14px;
+background: #fff;
+border-collapse: collapse;
+text-align: left;
+}
+table th
+{
+font-size: 14px;
+font-weight: normal;
+color: #039;
+padding: 2px 2px;
+border-bottom: 2px solid #6678b1;
+}
+table td
+{
+border-bottom: 1px solid #eee;
+color: #669;
+padding: 2px 2px 2px 2px;
+vertical-align: top;
+}
+
+.box{
+	border-style: solid;;
+	border-width: 1px;
+	border-color: #ddd;
+
+	margin: 6px;
+	padding: 6px;
+	background: #eee;
+}

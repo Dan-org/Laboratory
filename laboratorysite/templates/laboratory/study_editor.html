@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="general wrapper clearfix" id="dole">
+  
+	<hgroup class="col full">
+	  <h1>Study</h1>      
+	</hgroup>
+
+    <article class="eightcol first container">
+        <div class="content">
+            
+            <h2>{{ study.name }}</h2>
+            
+            <table width="50%">                
+                <tr>
+                    <th>Group</th>
+                    <th>Participant</th>
+                </tr>
+                {% for group in study.groups.all %}
+                <tr>
+                    <th>{{group.name}}</th>
+                    <th></th>
+                </tr>                
+                    {% for user in group.participants.all %}
+                    <tr>
+                        <td></td>
+                        <td>{{ user.name }}</td>
+                    </tr>
+                    {% endfor %}
+                {% endfor %}                
+            </table>
+        </div>
+	</article>
+    
+    <aside class="act-side fourcol last">
+        <div class="container clearfix">
+            <div class="side-title">Create Study</div>
+            <div class="regular">
+                <p>Go to: <a href="/admin/laboratory">Laboratory Admin</a></p>
+            </div>
+        </div>
+        
+        <div class="container clearfix">
+            <div class="side-title">Add Anonymous Participants</div>
+            <div class="regular">
+                {{form.non_field_errors}}
+                <form method="post" action="{% url 'study' study=study.id %}" >
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td><label for="id_amount">How many:</label></td>
+                            <td>{{ form.amount }}</td>
+                            <td>{{ form.amount.errors }}</td>
+                        </tr>
+                        <tr>
+                            <td><label for="id_group">To group:</label></td>
+                            <td>{{ form.group }}</td>
+                            <td>{{ form.group.errors }}</td>
+                        </tr>
+                    </table> 
+                <p><input type="submit" value="Post" /></p>                
+            </form>
+            </div>
+        </div>
+    </aside>
+	
+</div>
+	
+{% endblock %}
