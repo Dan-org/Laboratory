@@ -1,5 +1,5 @@
 """
-Django settings for laboratorysite project.
+Django settings for example project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'laboratory',
-    'laboratorysite',
+    'example',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,9 +52,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'laboratorysite.urls'
+ROOT_URLCONF = 'example.urls'
 
-WSGI_APPLICATION = 'laboratorysite.wsgi.application'
+WSGI_APPLICATION = 'example.wsgi.application'
 
 
 # Database
@@ -108,6 +108,6 @@ LOGIN_REDIRECT_URL = "/"
 ### FIXTURES ###
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
 FIXTURE_DIRS = (
-    normpath(join(BASE_DIR, 'laboratorysite/fixtures')),
+    normpath(join(BASE_DIR, 'example/fixtures')),
 )
 

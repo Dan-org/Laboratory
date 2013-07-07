@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     # Auth
     url(r'^auth/', include('django.contrib.auth.urls')),
     
-    url(r'^$', 'laboratorysite.views.home', name='home'),
+    url(r'^$', 'example.views.home', name='home'),
 )

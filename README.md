@@ -8,11 +8,11 @@ To use laboraty in the Loft
 - include laboratory urls if you want the study editing tools
 - add_to_builtins('quiz.templatetags.laboratory')  # for discourse tags to work
 
-To use the study tags in you templates, see laboratorysite/templates/home.html
+To use the study tags in you templates, see example/templates/home.html
 
 
 
-To run the laboratorysite example...
+To run the example example...
 -------------------
 Prerequisites for Mac OS:
 Make sure you have the XCode development environment and the Development Command Line Tools.  They can be downloaded from https://developer.apple.com/downloads/index.action, you need Xcode 4.6 or higher, and "Command Line Tools" for your version of your OS.
