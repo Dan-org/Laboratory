@@ -2,7 +2,6 @@ import os
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
-from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django.template import RequestContext, Context, Template
@@ -22,5 +21,3 @@ def study(request, study):
     if form.is_valid():
         form.save()    
     return render(request, 'laboratory/study_editor.html', locals())
-    
-

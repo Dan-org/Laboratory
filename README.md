@@ -65,9 +65,49 @@ This will start up the server, running.  Visit http://127.0.0.1:8000/ in your br
 Changes you make should automatically up
 
 
+Step 7:
+If you load up the test fixtures, you can login with:
+  user: admin
+  pass: admin
 
 
 Run tests
 ------
 ./manage.py test laboratory
+
+
+
+Use Laboratory!
+---------------
+1. Create a study in the admin interface
+2. Create some groups in the admin interface
+3. Add tags to your page to show/hide content for different groups, (see example/templates/home.html for example, e.g.,:
+
+  <p>Everyone in 'Study 1' should see this:</p> 
+  {% study 'Study 1'  %}
+      <p>Hi Study 1 participant!</p>
+  {% endstudy %}
+  
+  <p>Everyone in 'Study 1,' 'Group A' should see this:</p>  
+  {% study 'Study 1' 'Group A' %}
+      <p>Hi Group A participant!</p>
+  {% endstudy %}
+
+  <p>Everyone in 'Study 1,' 'Group B' should see this:</p>
+  {% study 'Study 1' 'Gbroup B' %}
+     <p>Hi Group B participant!</p>
+  {% endstudy %}                
+
+  <p>Everyone NOT in 'Study 1' should see this:</p>
+  {% study 'Study 1' 'NA' %}
+     <p>Hi person not in Study 1!</p>
+  {% endstudy %}
+
+  <p>This is what happens if you are logged in and the study doesn't exist:</p>
+  {% study 'Study Foobar' %}
+     <p>There will be an error message here</p>
+  {% endstudy %}
+
+
+
 

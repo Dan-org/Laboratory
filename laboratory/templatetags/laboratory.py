@@ -49,11 +49,11 @@ class StudyTag(ttag.Tag):
         
         data = self.resolve(context)
         #print data
-        print "HI3"
+        #print "HI3"
         study_name  = _strip_quotes(data['study'])
         group_name  = _strip_quotes(data['group'])        
         
-        print "HI2"
+        #print "HI2"
 
         if context['request'].user.is_authenticated():            
             user = context['request'].user
