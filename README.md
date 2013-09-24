@@ -94,7 +94,7 @@ Use Laboratory!
   {% endstudy %}
 
   <p>Everyone in 'Study 1,' 'Group B' should see this:</p>
-  {% study 'Study 1' 'Gbroup B' %}
+  {% study 'Study 1' 'Group B' %}
      <p>Hi Group B participant!</p>
   {% endstudy %}                
 
